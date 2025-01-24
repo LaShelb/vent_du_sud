@@ -13,6 +13,7 @@ class Character(BaseModel):
     name: str
     description: str
     language: Language
+    image_url: str
 
 class Choice(BaseModel):
     id: int

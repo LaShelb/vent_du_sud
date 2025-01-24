@@ -36,24 +36,24 @@ LANGUAGES = [
 # Character translations
 CHARACTER_TRANSLATIONS = {
     Language.ENGLISH: [
-        Character(name="Brave Knight", description="Strong and honorable", language=Language.ENGLISH),
-        Character(name="Wise Mage", description="Intelligent and mysterious", language=Language.ENGLISH),
-        Character(name="Cunning Rogue", description="Clever and resourceful", language=Language.ENGLISH)
+        Character(name="Brave Knight", description="Strong and honorable", language=Language.ENGLISH, image_url="/images/characters/knight.svg"),
+        Character(name="Wise Mage", description="Intelligent and mysterious", language=Language.ENGLISH, image_url="/images/characters/mage.svg"),
+        Character(name="Cunning Rogue", description="Clever and resourceful", language=Language.ENGLISH, image_url="/images/characters/rogue.svg")
     ],
     Language.FRENCH: [
-        Character(name="Chevalier Courageux", description="Fort et honorable", language=Language.FRENCH),
-        Character(name="Mage Sage", description="Intelligent et mystérieux", language=Language.FRENCH),
-        Character(name="Voleur Rusé", description="Astucieux et débrouillard", language=Language.FRENCH)
+        Character(name="Chevalier Courageux", description="Fort et honorable", language=Language.FRENCH, image_url="/images/characters/knight.svg"),
+        Character(name="Mage Sage", description="Intelligent et mystérieux", language=Language.FRENCH, image_url="/images/characters/mage.svg"),
+        Character(name="Voleur Rusé", description="Astucieux et débrouillard", language=Language.FRENCH, image_url="/images/characters/rogue.svg")
     ],
     Language.SPANISH: [
-        Character(name="Caballero Valiente", description="Fuerte y honorable", language=Language.SPANISH),
-        Character(name="Mago Sabio", description="Inteligente y misterioso", language=Language.SPANISH),
-        Character(name="Pícaro Astuto", description="Ingenioso y recursivo", language=Language.SPANISH)
+        Character(name="Caballero Valiente", description="Fuerte y honorable", language=Language.SPANISH, image_url="/images/characters/knight.svg"),
+        Character(name="Mago Sabio", description="Inteligente y misterioso", language=Language.SPANISH, image_url="/images/characters/mage.svg"),
+        Character(name="Pícaro Astuto", description="Ingenioso y recursivo", language=Language.SPANISH, image_url="/images/characters/rogue.svg")
     ],
     Language.GERMAN: [
-        Character(name="Tapferer Ritter", description="Stark und ehrenvoll", language=Language.GERMAN),
-        Character(name="Weiser Magier", description="Intelligent und geheimnisvoll", language=Language.GERMAN),
-        Character(name="Schlauer Schurke", description="Clever und findig", language=Language.GERMAN)
+        Character(name="Tapferer Ritter", description="Stark und ehrenvoll", language=Language.GERMAN, image_url="/images/characters/knight.svg"),
+        Character(name="Weiser Magier", description="Intelligent und geheimnisvoll", language=Language.GERMAN, image_url="/images/characters/mage.svg"),
+        Character(name="Schlauer Schurke", description="Clever und findig", language=Language.GERMAN, image_url="/images/characters/rogue.svg")
     ]
 }
 

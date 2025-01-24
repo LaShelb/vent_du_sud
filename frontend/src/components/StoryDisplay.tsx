@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Choice {
   id: number;
@@ -12,6 +13,7 @@ interface Props {
   character: {
     name: string;
     description: string;
+    image_url: string;
   };
   storyText: string;
   choices: Choice[];
@@ -46,10 +48,23 @@ export default function StoryDisplay({
   return (
     <div className="space-y-8 w-full max-w-4xl p-6">
       <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg border border-gray-700">
-        <h2 className="text-xl font-bold mb-2">Your Character</h2>
-        <p className="text-gray-400">
-          {character.name} - {character.description}
-        </p>
+        <div className="flex items-center space-x-6">
+          <div className="relative w-20 h-20 rounded-full bg-gray-700/50 p-3 flex-shrink-0">
+            <Image
+              src={character.image_url}
+              alt={character.name}
+              width={80}
+              height={80}
+              className="transition-transform duration-200 hover:scale-110"
+            />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold mb-2">Your Character</h2>
+            <p className="text-gray-400">
+              {character.name} - {character.description}
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="bg-gray-800/50 backdrop-blur-sm p-6 rounded-lg border border-gray-700 min-h-[200px]">
