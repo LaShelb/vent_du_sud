@@ -1,10 +1,11 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 from typing import List, Optional
 import os
 from dotenv import load_dotenv
 from mistralai import Mistral
+
+from models import Character, Choice, StoryResponse, UserChoice
 
 # Load environment variables
 load_dotenv()
@@ -23,24 +24,6 @@ app.add_middleware(
 
 # Initialize Mistral client
 client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
-
-# Models
-class Character(BaseModel):
-    name: str
-    description: str
-
-class Choice(BaseModel):
-    id: int
-    text: str
-
-class StoryResponse(BaseModel):
-    story_text: str
-    choices: List[Choice]
-
-class UserChoice(BaseModel):
-    choice_id: int
-    choice_text: str
-    story_context: str
 
 # Available characters
 CHARACTERS = [

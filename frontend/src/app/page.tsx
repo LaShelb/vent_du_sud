@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import CharacterSelection from '@/components/CharacterSelection';
-import StoryDisplay from '@/components/StoryDisplay';
+import StorySlider from '@/components/StorySlider';
 
 export default function Home() {
   const [character, setCharacter] = useState<any>(null);
-  const [storyText, setStoryText] = useState<string>('');
-  const [choices, setChoices] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [initialStory, setInitialStory] = useState<any>(null);
 
   const handleCharacterSelect = async (selectedCharacter: any) => {
     setIsLoading(true);
@@ -22,12 +21,12 @@ export default function Home() {
       });
       const data = await response.json();
       setCharacter(selectedCharacter);
-      setStoryText(data.story_text);
-      setChoices(data.choices);
+      setInitialStory(data);
     } catch (error) {
       console.error('Error starting story:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const handleChoice = async (choice: any) => {
@@ -41,35 +40,34 @@ export default function Home() {
         body: JSON.stringify({
           choice_id: choice.id,
           choice_text: choice.text,
-          story_context: storyText,
+          story_context: choice.storyText,
         }),
       });
       const data = await response.json();
-      setStoryText(data.story_text);
-      setChoices(data.choices);
+      return data;
     } catch (error) {
       console.error('Error continuing story:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black text-white">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-400 to-cyan-400 text-transparent bg-clip-text">
-          Interactive Story Adventur
+          Interactive Story Adventure
         </h1>
         
         <div className="flex justify-center">
           {!character ? (
             <CharacterSelection onSelect={handleCharacterSelect} />
           ) : (
-            <StoryDisplay
+            <StorySlider
               character={character}
-              storyText={storyText}
-              choices={choices}
               onChoice={handleChoice}
               isLoading={isLoading}
+              initialStory={initialStory}
             />
           )}
         </div>
